@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CV — cptn cvck</title>
+  <meta name="description" content="Currículum técnico orientado a OpenShift / DevOps / Platform Engineering." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0d10;
+      --panel: #12161b;
+      --ink: #e6eef8;
+      --ink-soft: #b8c2cc;
+      --brand: #4fc3f7;
+      --brand-ink: #041018;
+      --stroke: #1e242d;
+      --chip: #1a1f27;
+      --ok: #4ade80;
+      --warn: #f59e0b;
+    }
+    @media (prefers-color-scheme: light) {
+      :root { --bg:#f6f8fb; --panel:#ffffff; --ink:#0b1020; --ink-soft:#5b6673; --stroke:#e8edf3; --chip:#eef3f8; --brand:#2563eb; --brand-ink:#eaf2ff; }
+    }
+    * { box-sizing: border-box; }
+    html, body { margin:0; padding:0; }
+    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.5; }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 980px; margin: 40px auto; padding: 0 20px; }
+    header { display:flex; flex-wrap:wrap; gap:16px; align-items:center; justify-content:space-between; margin-bottom: 20px; }
+    .id { display:flex; gap:16px; align-items:center; }
+    .avatar { width:72px; height:72px; border-radius:50%; background: linear-gradient(135deg, var(--brand), #7dd3fc); display:flex; align-items:center; justify-content:center; color:var(--brand-ink); font-weight:800; box-shadow: 0 6px 18px rgba(0,0,0,.25); }
+    .name { font-size: 1.6rem; font-weight: 700; }
+    .role { color: var(--ink-soft); }
+    .actions { display:flex; gap:8px; flex-wrap:wrap; }
+    .btn { background: var(--brand); color: var(--brand-ink); border: 0; padding:10px 14px; border-radius: 12px; font-weight:600; cursor:pointer; transition: transform .06s ease; }
+    .btn:hover { transform: translateY(-1px); }
+    .ghost { background: var(--chip); color: var(--ink); }
+    .grid { display:grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+    @media (max-width: 900px) { .grid{ grid-template-columns: 1fr; } }
+
+    .card { background: var(--panel); border: 1px solid var(--stroke); border-radius: 16px; padding: 18px; }
+    .card h2 { margin: 0 0 8px; font-size: 1.05rem; letter-spacing: .2px; text-transform: uppercase; color: var(--ink-soft); }
+    .card h3 { margin: 14px 0 4px; font-size: 1.02rem; }
+    .meta { color: var(--ink-soft); font-size: .92rem; }
+
+    .list { display:flex; flex-direction:column; gap: 14px; }
+    .item { display:flex; gap:12px; }
+    .dot { width:10px; height:10px; border-radius: 50%; background: var(--brand); margin-top: 8px; flex:0 0 10px; }
+
+    .skills { display:flex; flex-wrap:wrap; gap:8px; }
+    .chip { background: var(--chip); border: 1px solid var(--stroke); padding:6px 10px; border-radius: 999px; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: .82rem; }
+
+    footer { margin: 24px 0 40px; color: var(--ink-soft); font-size:.92rem; display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; }
+
+    .two-col { display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
+    @media (max-width: 700px) { .two-col{ grid-template-columns: 1fr; } }
+
+    /* Print-friendly */
+    @media print {
+      body { background: white; color: black; }
+      .card { border: 1px solid #ddd; }
+      .actions, .avatar, .theme-toggle { display:none !important; }
+      a { color: black; text-decoration: none; }
+      .wrap { margin: 0; max-width: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="id">
+        <div class="avatar" aria-hidden>CV</div>
+        <div>
+          <div class="name">cptn cvck — Ingeniero de Software / Platform (DevOps)</div>
+          <div class="role">Interés actual: OpenShift / Kubernetes • Cambio interno de departamento</div>
+          <div class="meta">Buenos Aires, AR · <a href="mailto:tu.email@empresa.com">tu.email@empresa.com</a> · <a href="https://github.com/qbixxx" target="_blank" rel="noopener">github.com/qbixxx</a> · <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn" onclick="window.print()">Descargar PDF</button>
+        <button class="btn ghost theme-toggle" id="themeBtn" aria-pressed="false">Tema: Auto</button>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="card">
+        <h2>Resumen</h2>
+        <p>Desarrollador con foco en sistemas, redes y seguridad; experiencia en C/C++, Go y Python. Interés fuerte en ingeniería de plataformas orientada a <strong>OpenShift/Kubernetes</strong>, automatización CI/CD y observabilidad. Experiencia previa en blue teaming y hardening, con buen criterio de producción y foco en calidad.</p>
+
+        <h2>Experiencia</h2>
+        <div class="list">
+          <div class="item">
+            <div class="dot"></div>
+            <div>
+              <h3>Empresa Actual — Software Engineer</h3>
+              <div class="meta">Año–presente · Buenos Aires · Stack: Go, C/C++, Linux, Docker</div>
+              <ul>
+                <li>Diseñé e implementé servicios de red y protocolos robustos (TCP) siguiendo RAII y buenas prácticas de concurrencia.</li>
+                <li>Automatización con contenedores y pipelines; mejoras de latencia para workloads de audio y procesamiento.</li>
+                <li>Buenas prácticas de seguridad: hardening, logging, monitoreo y respuesta a incidentes (blue team).</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Agregar más items de experiencia aquí -->
+        </div>
+
+        <h2>Proyectos relevantes</h2>
+        <div class="two-col">
+          <div class="card" style="padding:12px">
+            <h3>Abacus Engine (Go / TUI)</h3>
+            <div class="meta">Simulador tipo assembler con UI en terminal (tview)</div>
+            <ul>
+              <li>Arquitectura modular; manejo de archivos (CSV) y depuración.</li>
+              <li>Orientado a enseñanza de opcodes y memoria.</li>
+            </ul>
+            <a href="https://github.com/qbixxx" target="_blank" rel="noopener">Ver repos</a>
+          </div>
+          <div class="card" style="padding:12px">
+            <h3>PoC Sockets — Counter‑Strike 2D (C++)</h3>
+            <div class="meta">Cliente/servidor con protocolos binario/texto y tolerancia a fragmentación.</div>
+            <ul>
+              <li>Implementación robusta de send/recv; DTOs para estado del jugador.</li>
+              <li>Refactors de diseño, encapsulación y monitoreo del juego.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>Educación & Certificaciones</h2>
+        <ul>
+          <li>Curso: <strong>Practical OpenShift for Developers (OpenShift 4)</strong> — Udemy (2025). <em>(en curso)</em></li>
+          <li>LFCSA (intro por Udemy) — fundamentos Linux/administración.</li>
+          <li>Badges/certificados: ciberseguridad (blue team), COBOL (nivel inicial).</li>
+          <!-- Reemplazar con enlaces reales a certificados -->
+        </ul>
+
+      </section>
+
+      <aside class="card">
+        <h2>Core Skills</h2>
+        <div class="skills">
+          <span class="chip">OpenShift</span>
+          <span class="chip">Kubernetes</span>
+          <span class="chip">Docker/Containers</span>
+          <span class="chip">Helm</span>
+          <span class="chip">CI/CD</span>
+          <span class="chip">Linux</span>
+          <span class="chip">Bash</span>
+          <span class="chip">Go</span>
+          <span class="chip">C/C++</span>
+          <span class="chip">Networking</span>
+          <span class="chip">Security (Blue Team)</span>
+          <span class="chip">Git</span>
+          <span class="chip">Observability</span>
+        </div>
+
+        <h2>Highlights</h2>
+        <ul>
+          <li>Experiencia en troubleshooting de red, captura/pcap y tcpdump.</li>
+          <li>Diseño de protocolos y tolerancia a fallas (fragmentación, timeouts).</li>
+          <li>Optimización y refactor de código con foco en mantenibilidad.</li>
+        </ul>
+
+        <h2>Links</h2>
+        <ul>
+          <li><a href="https://github.com/qbixxx" target="_blank" rel="noopener">GitHub: qbixxx</a></li>
+          <li><a href="#" target="_blank" rel="noopener">Certificados (carpeta)</a></li>
+          <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+
+        <h2>Contacto</h2>
+        <ul>
+          <li>Email: <a href="mailto:tu.email@empresa.com">tu.email@empresa.com</a></li>
+          <li>Tel.: +54 …</li>
+        </ul>
+      </aside>
+    </div>
+
+    <footer>
+      <div>Última actualización: <span id="updated"></span></div>
+      <div>Tip: usá “Descargar PDF” para generar una copia imprimible.</div>
+    </footer>
+  </div>
+
+  <script>
+    // Fecha de actualización automática
+    document.getElementById('updated').textContent = new Date().toLocaleDateString('es-AR', { year:'numeric', month:'short', day:'2-digit' });
+
+    // Toggle de tema (auto/light/dark)
+    (function(){
+      const btn = document.getElementById('themeBtn');
+      const modes = ['auto','light','dark'];
+      let ix = 0;
+      const apply = (mode)=>{
+        document.documentElement.dataset.theme = mode;
+        if(mode==='light'){
+          document.documentElement.style.setProperty('--bg','#f6f8fb');
+          document.documentElement.style.setProperty('--panel','#ffffff');
+          document.documentElement.style.setProperty('--ink','#0b1020');
+          document.documentElement.style.setProperty('--ink-soft','#5b6673');
+          document.documentElement.style.setProperty('--stroke','#e8edf3');
+          document.documentElement.style.setProperty('--chip','#eef3f8');
+          document.documentElement.style.setProperty('--brand','#2563eb');
+          document.documentElement.style.setProperty('--brand-ink','#eaf2ff');
+        } else if(mode==='dark'){
+          document.documentElement.style.setProperty('--bg','#0b0d10');
+          document.documentElement.style.setProperty('--panel','#12161b');
+          document.documentElement.style.setProperty('--ink','#e6eef8');
+          document.documentElement.style.setProperty('--ink-soft','#b8c2cc');
+          document.documentElement.style.setProperty('--stroke','#1e242d');
+          document.documentElement.style.setProperty('--chip','#1a1f27');
+          document.documentElement.style.setProperty('--brand','#4fc3f7');
+          document.documentElement.style.setProperty('--brand-ink','#041018');
+        } else {
+          // auto (reset to CSS)
+          window.location.reload();
+        }
+        btn.textContent = 'Tema: ' + (mode==='auto' ? 'Auto' : (mode==='light' ? 'Claro' : 'Oscuro'));
+      };
+      btn.addEventListener('click', ()=>{ ix = (ix+1)%modes.length; apply(modes[ix]); });
+    })();
+  </script>
+</body>
+</html>
