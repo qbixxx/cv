@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" href="favicon.png">
   <title>CV · Valentin Cedeño</title>
   <meta name="description" content="Currículum vitae." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -74,7 +75,7 @@
     <header>
       <div class="id">
         <div>
-          <div class="name"> Valentin Cedeño</div>
+          <div class="name">Valentin Cedeño</div>
           <div class="role">Estudiante de Ingeniería Informática UBA · Técnico electrónico en telecomunicaciones IILAH</div>
           <div class="meta">Buenos Aires, AR  · <a href="https://github.com/qbixxx" target="_blank" rel="noopener">github.com/qbixxx</a> · <a href="mailto:valentinccomp@gmail.com">valentinccomp@gmail.com</a></div>
         </div>
@@ -136,7 +137,7 @@ Motivado por el aprendizaje continuo y con fuerte orientación a la resolución 
 
         <h2>Educación</h2>
         <ul>
-          <li>Universitario: <strong>Ingeniería Informática</strong> — Facultad de Ingeniería de la Universidad de Buenos Aires. <em>2021(en curso)</em></li>
+          <li>Universitario: <strong>Ingeniería Informática</strong> — Facultad de Ingeniería de la Universidad de Buenos Aires. <em>2021- en curso</em></li>
           <li>Secundario: <strong>Técnico electrónico en telecomunicaciones</strong> — Instituto Industrial Luis A. Huergo <em>2011 - 2017</em></li>
         </ul>
       </section>
@@ -198,7 +199,7 @@ Motivado por el aprendizaje continuo y con fuerte orientación a la resolución 
   <ul>
     <li>FOSS</li>
     <li>Plataformas cloud-native y orquestación de contenedores</li>
-    <li>Seguridad informática: Análisis de vulnerabilidades - CVE's</li>
+    <li>Seguridad informática: Análisis de vulnerabilidades - CVEs</li>
     <li>Programación de sistemas y optimización de rendimiento</li>
   </ul>
 
@@ -220,48 +221,77 @@ Motivado por el aprendizaje continuo y con fuerte orientación a la resolución 
 
     </div>
 
-    <footer>
-      <div>Tip: usá “Descargar PDF” para generar una copia imprimible.</div>
-    </footer>
+<footer>
+  <div>Última actualización: <span id="updated"></span></div>
+  <div>Tip: usá “Descargar PDF” para generar una copia imprimible.</div>
+</footer>
   </div>
 
-  <script>
-    // Fecha de actualización automática
-    document.getElementById('updated').textContent = new Date().toLocaleDateString('es-AR', { year:'numeric', month:'short', day:'2-digit' });
+<script>
+  // Fecha de actualización (con guarda por si falta el span)
+  (function () {
+    const el = document.getElementById('updated');
+    if (el) el.textContent = new Date().toLocaleDateString('es-AR', { year:'numeric', month:'short', day:'2-digit' });
+  })();
 
-    // Toggle de tema (auto/light/dark)
-    (function(){
-      const btn = document.getElementById('themeBtn');
-      const modes = ['auto','light','dark'];
-      let ix = 0;
-      const apply = (mode)=>{
-        document.documentElement.dataset.theme = mode;
-        if(mode==='light'){
-          document.documentElement.style.setProperty('--bg','#f6f8fb');
-          document.documentElement.style.setProperty('--panel','#ffffff');
-          document.documentElement.style.setProperty('--ink','#0b1020');
-          document.documentElement.style.setProperty('--ink-soft','#5b6673');
-          document.documentElement.style.setProperty('--stroke','#e8edf3');
-          document.documentElement.style.setProperty('--chip','#eef3f8');
-          document.documentElement.style.setProperty('--brand','#2563eb');
-          document.documentElement.style.setProperty('--brand-ink','#eaf2ff');
-        } else if(mode==='dark'){
-          document.documentElement.style.setProperty('--bg','#0b0d10');
-          document.documentElement.style.setProperty('--panel','#12161b');
-          document.documentElement.style.setProperty('--ink','#e6eef8');
-          document.documentElement.style.setProperty('--ink-soft','#b8c2cc');
-          document.documentElement.style.setProperty('--stroke','#1e242d');
-          document.documentElement.style.setProperty('--chip','#1a1f27');
-          document.documentElement.style.setProperty('--brand','#4fc3f7');
-          document.documentElement.style.setProperty('--brand-ink','#041018');
-        } else {
-          // auto (reset to CSS)
-          window.location.reload();
-        }
-        btn.textContent = 'Tema: ' + (mode==='auto' ? 'Auto' : (mode==='light' ? 'Claro' : 'Oscuro'));
-      };
-      btn.addEventListener('click', ()=>{ ix = (ix+1)%modes.length; apply(modes[ix]); });
-    })();
-  </script>
+  // Toggle de tema (auto / claro / oscuro) sin recargar y con memoria
+  (function(){
+    const btn = document.getElementById('themeBtn');
+    if (!btn) return;
+
+    const VARS = ['--bg','--panel','--ink','--ink-soft','--stroke','--chip','--brand','--brand-ink'];
+
+    const setText = (mode) => {
+      btn.textContent = 'Tema: ' + (mode==='auto' ? 'Auto' : (mode==='light' ? 'Claro' : 'Oscuro'));
+      btn.setAttribute('aria-pressed', mode !== 'auto');
+    };
+
+    const clearOverrides = () => {
+      for (const v of VARS) document.documentElement.style.removeProperty(v);
+    };
+
+    const apply = (mode) => {
+      document.documentElement.dataset.theme = mode;
+
+      if (mode === 'light') {
+        document.documentElement.style.setProperty('--bg','#f6f8fb');
+        document.documentElement.style.setProperty('--panel','#ffffff');
+        document.documentElement.style.setProperty('--ink','#0b1020');
+        document.documentElement.style.setProperty('--ink-soft','#5b6673');
+        document.documentElement.style.setProperty('--stroke','#e8edf3');
+        document.documentElement.style.setProperty('--chip','#eef3f8');
+        document.documentElement.style.setProperty('--brand','#2563eb');
+        document.documentElement.style.setProperty('--brand-ink','#eaf2ff');
+      } else if (mode === 'dark') {
+        document.documentElement.style.setProperty('--bg','#0b0d10');
+        document.documentElement.style.setProperty('--panel','#12161b');
+        document.documentElement.style.setProperty('--ink','#e6eef8');
+        document.documentElement.style.setProperty('--ink-soft','#b8c2cc');
+        document.documentElement.style.setProperty('--stroke','#1e242d');
+        document.documentElement.style.setProperty('--chip','#1a1f27');
+        document.documentElement.style.setProperty('--brand','#4fc3f7');
+        document.documentElement.style.setProperty('--brand-ink','#041018');
+      } else {
+        // auto → quitar overrides y dejar que el CSS + prefers-color-scheme decidan
+        clearOverrides();
+      }
+
+      localStorage.setItem('cv-theme', mode);
+      setText(mode);
+    };
+
+    // Estado inicial
+    const saved = localStorage.getItem('cv-theme') || 'auto';
+    apply(saved);
+
+    // Click → rota auto → claro → oscuro
+    const seq = ['auto','light','dark'];
+    btn.addEventListener('click', ()=>{
+      const ix = (seq.indexOf(localStorage.getItem('cv-theme') || 'auto') + 1) % seq.length;
+      apply(seq[ix]);
+    });
+  })();
+</script>
+
 </body>
 </html>
